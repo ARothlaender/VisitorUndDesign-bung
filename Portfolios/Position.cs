@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using VisitorUndDesignübung.Visitors;
 
 namespace Bundesbank.Rc1.Übungen.Portfolios
 {
@@ -9,6 +10,7 @@ namespace Bundesbank.Rc1.Übungen.Portfolios
     {
         private decimal marketValue;
         private readonly IInstrument instrument;
+
         IInstrument IPosition.Instrument => this.instrument;
         public decimal NominalAmount { get; set; }
         public decimal MarketValue { get => NominalAmount * instrument.Evaluate();
@@ -24,6 +26,11 @@ namespace Bundesbank.Rc1.Übungen.Portfolios
         public override string ToString()
         {
             return $"Diese Position enthält ein Instrument des Issuers {this.instrument.Issuer} mit einem Marktwert von {MarketValue}";
+        }
+
+        public void accept(IPositionVisitor visitor)
+        {
+            visitor.Visit(this);
         }
     }
 }

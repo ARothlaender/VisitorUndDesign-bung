@@ -6,7 +6,7 @@ using System.Text;
 namespace Bundesbank.Rc1.Übungen.PriceData
 {
 
-    public class PriceLookup
+    public class PriceLookup : IPriceLookup
     {
         //Singleton
         private static PriceLookup instance = null;
@@ -28,7 +28,7 @@ namespace Bundesbank.Rc1.Übungen.PriceData
         {
             prices = InitiatePrices();
         }
-        public decimal? FindPrice(string identifier)
+        public virtual decimal? FindPrice(string identifier)
         {
             try
             {

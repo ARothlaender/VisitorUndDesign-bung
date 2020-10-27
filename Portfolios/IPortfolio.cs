@@ -8,8 +8,7 @@ namespace Bundesbank.Rc1.Übungen.Portfolios
     public interface IPortfolio
 
     {
-        public string GetPortfolioStructureInformation(Object config);
+        //public string GetPortfolioStructureInformation(Object config);
         public void AddPosition(IPosition position);
-        public IList<IPosition> Positions { get; }
     }
 }

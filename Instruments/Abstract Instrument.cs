@@ -14,14 +14,19 @@ namespace Bundesbank.Rc1.Übungen.Instruments
 
         public virtual decimal Evaluate() 
         {
-            decimal? marketPrice = PriceLookup.PriceTable.FindPrice(this.ISIN);
+            return Evaluate(PriceLookup.PriceTable);
+        }
+        public virtual decimal Evaluate(IPriceLookup priceData)
+        {
+            decimal? marketPrice = priceData.FindPrice(this.ISIN);
             return marketPrice != null ? (decimal)marketPrice : CalculatePrice();
         }
-
         protected virtual decimal CalculatePrice()
         {
             return 1.0m;
         }
+
+       
 
         public AbstractInstrument(string issuer,string isin, string rating, string currency)
         {

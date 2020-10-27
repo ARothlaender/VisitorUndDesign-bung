@@ -29,6 +29,8 @@ namespace Bundesbank.Rc1.Übungen
 
             samplePortfolio.PrintPositions();
 
+            samplePortfolio.PrintAvailablePortfolioInformation();
+
         }
 
     }
